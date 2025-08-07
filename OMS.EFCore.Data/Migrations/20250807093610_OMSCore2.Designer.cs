@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OMS.EFCore.Data;
 
@@ -11,9 +12,11 @@ using OMS.EFCore.Data;
 namespace OMS.EFCore.Data.Migrations
 {
     [DbContext(typeof(OMSEFCoreDbContext))]
-    partial class OMSEFCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250807093610_OMSCore2")]
+    partial class OMSCore2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,27 +60,27 @@ namespace OMS.EFCore.Data.Migrations
                         new
                         {
                             CateId = 1,
-                            CreateDate = new DateTime(2025, 8, 7, 16, 36, 33, 184, DateTimeKind.Local).AddTicks(9006),
+                            CreateDate = new DateTime(2025, 8, 7, 16, 36, 9, 942, DateTimeKind.Local).AddTicks(4120),
                             Description = "Phân loại 01",
-                            ModifiedDate = new DateTime(2025, 8, 7, 16, 36, 33, 184, DateTimeKind.Local).AddTicks(9018),
+                            ModifiedDate = new DateTime(2025, 8, 7, 16, 36, 9, 942, DateTimeKind.Local).AddTicks(4135),
                             Name = "Cate_01",
                             Status = "A"
                         },
                         new
                         {
                             CateId = 2,
-                            CreateDate = new DateTime(2025, 8, 7, 16, 36, 33, 184, DateTimeKind.Local).AddTicks(9020),
+                            CreateDate = new DateTime(2025, 8, 7, 16, 36, 9, 942, DateTimeKind.Local).AddTicks(4138),
                             Description = "Phân loại 02",
-                            ModifiedDate = new DateTime(2025, 8, 7, 16, 36, 33, 184, DateTimeKind.Local).AddTicks(9021),
+                            ModifiedDate = new DateTime(2025, 8, 7, 16, 36, 9, 942, DateTimeKind.Local).AddTicks(4139),
                             Name = "Cate_02",
                             Status = "A"
                         },
                         new
                         {
                             CateId = 3,
-                            CreateDate = new DateTime(2025, 8, 7, 16, 36, 33, 184, DateTimeKind.Local).AddTicks(9023),
+                            CreateDate = new DateTime(2025, 8, 7, 16, 36, 9, 942, DateTimeKind.Local).AddTicks(4141),
                             Description = "Phân loại 03",
-                            ModifiedDate = new DateTime(2025, 8, 7, 16, 36, 33, 184, DateTimeKind.Local).AddTicks(9023),
+                            ModifiedDate = new DateTime(2025, 8, 7, 16, 36, 9, 942, DateTimeKind.Local).AddTicks(4141),
                             Name = "Cate_03",
                             Status = "A"
                         });

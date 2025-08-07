@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMS.EFCore.Services", "OMS.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMS.EFCore.Repositories", "OMS.EFCore.Repositories\OMS.EFCore.Repositories.csproj", "{1CAE280C-DB6C-4937-BC1E-A53F596411A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMS.EFCore.Test", "OMS.EFCore.Test\OMS.EFCore.Test.csproj", "{DCA4E449-C558-4412-8993-E65F8CA47EF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{1CAE280C-DB6C-4937-BC1E-A53F596411A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CAE280C-DB6C-4937-BC1E-A53F596411A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CAE280C-DB6C-4937-BC1E-A53F596411A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCA4E449-C558-4412-8993-E65F8CA47EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCA4E449-C558-4412-8993-E65F8CA47EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCA4E449-C558-4412-8993-E65F8CA47EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCA4E449-C558-4412-8993-E65F8CA47EF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

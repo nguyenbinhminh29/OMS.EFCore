@@ -20,6 +20,7 @@ namespace OMS.EFCore.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Product>().HasKey(p => p.ProductId);
             modelBuilder.Entity<Category>(c =>
             {
                 c.Property(x => x.Name).IsRequired();
@@ -31,12 +32,12 @@ namespace OMS.EFCore.Data
                     );
             });
 
-            modelBuilder.Entity<Product>().HasKey(p => p.ProductId);
+            modelBuilder.Entity<Product>().HasOne(s => s.Category).WithMany(s => s.Products).HasForeignKey(s => s.CategoryId).OnDelete(DeleteBehavior.Restrict);
+
             modelBuilder.Entity<Customer>().HasKey(p => p.CustomerId);
             modelBuilder.Entity<Order>().HasKey(p => p.OrderId);
             modelBuilder.Entity<OrderItem>().HasKey(p => new { p.OrderItemId, p.OrderId, p.ProductId });
 
-            modelBuilder.Entity<Product>().HasOne(s => s.Category).WithMany(s => s.Products).HasForeignKey(s => s.CategoryId).OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);
         }
