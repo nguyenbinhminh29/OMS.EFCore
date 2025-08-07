@@ -11,10 +11,12 @@ namespace OMS.EFCore.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, ICategoryService categoryService)
         {
             this._productService = productService;
+            this._categoryService = categoryService;
         }
 
         [HttpGet]
@@ -48,6 +50,16 @@ namespace OMS.EFCore.Controllers
             {
                 return BadRequest("Status must be one of the 3 values A, I, D");
             }
+            if (product.CategoryId == null)
+            {
+                return BadRequest("Please select category for product.");
+            }
+            Category? cate = await _categoryService.GetByIdAsync(product.CategoryId.Value);
+            if (cate == null)
+            {
+                return BadRequest("Category id not found.");
+            }
+
             var created = await _productService.CreateAsync(product);
             return CreatedAtAction(nameof(Get), new { id = created.ProductId }, created);
         }

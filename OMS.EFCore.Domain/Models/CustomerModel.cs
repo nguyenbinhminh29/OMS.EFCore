@@ -17,7 +17,10 @@ namespace OMS.EFCore.Domain.Models
 
         public string? Address { get; set; }
 
-        public string? Status { get; set; }  // A - Active, I - Inactive, D - Delete
+        /// <summary>
+        /// A - Active, I - Inactive, D - Delete
+        /// </summary>
+        public string? Status { get; set; }
 
         public string? Remark { get; set; }
     }

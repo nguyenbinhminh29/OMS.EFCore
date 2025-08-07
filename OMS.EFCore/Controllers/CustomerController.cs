@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OMS.EFCore.Domain.Models;
 using OMS.EFCore.Services.Interfaces;
+using OMS.EFCore.Helper;
 
 namespace OMS.EFCore.Controllers
 {
@@ -36,8 +37,19 @@ namespace OMS.EFCore.Controllers
 
             if (!string.IsNullOrEmpty(customer.Status) && (customer.Status != "A" && customer.Status != "I" && customer.Status != "D"))
             {
-                return BadRequest("Status must be one of the 3 values A, I, D");
+                return BadRequest("Status must be one of the 3 values A, I, D.");
             }
+
+            if (!string.IsNullOrEmpty(customer.Email) && !customer.Email.IsValidEmail())
+            {
+                return BadRequest("Email is not in correct format.");
+            }
+
+            if (!string.IsNullOrEmpty(customer.PhoneNumber) && !customer.PhoneNumber.IsValidPhoneNumber())
+            {
+                return BadRequest("PhoneNumber is not in correct format.");
+            }
+
             var created = await _customerService.CreateAsync(customer);
             return CreatedAtAction(nameof(Get), new { id = created.CustomerId }, created);
         }
@@ -46,6 +58,17 @@ namespace OMS.EFCore.Controllers
         public async Task<IActionResult> Update(int id, [FromBody] CustomerModel customer)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            if (!string.IsNullOrEmpty(customer.Email) && !customer.Email.IsValidEmail())
+            {
+                return BadRequest("Email is not in correct format.");
+            }
+
+            if (!string.IsNullOrEmpty(customer.PhoneNumber) && !customer.PhoneNumber.IsValidPhoneNumber())
+            {
+                return BadRequest("PhoneNumber is not in correct format.");
+            }
+
             var result = await _customerService.UpdateAsync(id, customer);
             return result ? NoContent() : NotFound();
         }

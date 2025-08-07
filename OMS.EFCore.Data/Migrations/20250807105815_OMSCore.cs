@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace OMS.EFCore.Data.Migrations
 {
     /// <inheritdoc />
@@ -17,7 +19,7 @@ namespace OMS.EFCore.Data.Migrations
                 {
                     CateId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Status = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: true),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -120,6 +122,16 @@ namespace OMS.EFCore.Data.Migrations
                         principalTable: "Orders",
                         principalColumn: "OrderId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CateId", "CreateDate", "Description", "ModifiedDate", "Name", "Status" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2025, 8, 7, 17, 58, 14, 901, DateTimeKind.Local).AddTicks(6249), "Phân loại 01", new DateTime(2025, 8, 7, 17, 58, 14, 901, DateTimeKind.Local).AddTicks(6262), "Cate_01", "A" },
+                    { 2, new DateTime(2025, 8, 7, 17, 58, 14, 901, DateTimeKind.Local).AddTicks(6264), "Phân loại 02", new DateTime(2025, 8, 7, 17, 58, 14, 901, DateTimeKind.Local).AddTicks(6264), "Cate_02", "A" },
+                    { 3, new DateTime(2025, 8, 7, 17, 58, 14, 901, DateTimeKind.Local).AddTicks(6266), "Phân loại 03", new DateTime(2025, 8, 7, 17, 58, 14, 901, DateTimeKind.Local).AddTicks(6267), "Cate_03", "A" }
                 });
 
             migrationBuilder.CreateIndex(

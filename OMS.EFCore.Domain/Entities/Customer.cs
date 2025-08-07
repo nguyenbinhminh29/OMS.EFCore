@@ -23,8 +23,11 @@ namespace OMS.EFCore.Domain.Entities
         [MaxLength(150)]
         public string? Address { get; set; }
 
+        /// <summary>
+        /// A - Active, I - Inactive, D - Delete
+        /// </summary>
         [MaxLength(1)]
-        public string? Status { get; set; }  // A - Active, I - Inactive, D - Delete
+        public string? Status { get; set; }
 
         public DateTime CreateDate { get; set; }
 

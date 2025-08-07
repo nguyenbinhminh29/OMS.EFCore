@@ -15,15 +15,15 @@ namespace OMS.EFCore.Domain.Models
 
             if (TotalResultCount == 0 || take == 0)
             {
-                totalPageCount = 0;
+                TotalPageCount = 0;
                 return;
             }
 
-            totalPageCount = (int)Math.Ceiling((decimal)TotalResultCount / take);
+            TotalPageCount = (int)Math.Ceiling((decimal)TotalResultCount / take);
         }
 
         public List<T> Results { get; }
         public int TotalResultCount { get; }
-        public int totalPageCount { get; }
+        public int TotalPageCount { get; }
     }
 }

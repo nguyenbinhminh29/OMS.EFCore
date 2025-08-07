@@ -22,8 +22,8 @@ namespace OMS.EFCore.Test.Controllers
         {
             // Arrange
 
-            Mock<IProductRepository> productRepository = new Mock<IProductRepository>();
-            productRepository.Setup(x=>x.GetAllAsync()).ReturnsAsync(ProductMockData.GetProducts());
+            Mock<IProductRepository> productRepository = new();
+            productRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(ProductMockData.GetProducts());
 
             IProductService productService = new ProductService(productRepository.Object);
 
@@ -37,7 +37,7 @@ namespace OMS.EFCore.Test.Controllers
         }
 
         [Fact]
-        public async Task ProductController_GetProductById_ReturnOkStatus()
+        public async Task ProductController_GetProductById_ReturnNotFoundStatus()
         {
             // Arrange
 

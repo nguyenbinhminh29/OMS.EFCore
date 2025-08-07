@@ -57,27 +57,27 @@ namespace OMS.EFCore.Data.Migrations
                         new
                         {
                             CateId = 1,
-                            CreateDate = new DateTime(2025, 8, 7, 16, 36, 33, 184, DateTimeKind.Local).AddTicks(9006),
+                            CreateDate = new DateTime(2025, 8, 7, 17, 58, 14, 901, DateTimeKind.Local).AddTicks(6249),
                             Description = "Phân loại 01",
-                            ModifiedDate = new DateTime(2025, 8, 7, 16, 36, 33, 184, DateTimeKind.Local).AddTicks(9018),
+                            ModifiedDate = new DateTime(2025, 8, 7, 17, 58, 14, 901, DateTimeKind.Local).AddTicks(6262),
                             Name = "Cate_01",
                             Status = "A"
                         },
                         new
                         {
                             CateId = 2,
-                            CreateDate = new DateTime(2025, 8, 7, 16, 36, 33, 184, DateTimeKind.Local).AddTicks(9020),
+                            CreateDate = new DateTime(2025, 8, 7, 17, 58, 14, 901, DateTimeKind.Local).AddTicks(6264),
                             Description = "Phân loại 02",
-                            ModifiedDate = new DateTime(2025, 8, 7, 16, 36, 33, 184, DateTimeKind.Local).AddTicks(9021),
+                            ModifiedDate = new DateTime(2025, 8, 7, 17, 58, 14, 901, DateTimeKind.Local).AddTicks(6264),
                             Name = "Cate_02",
                             Status = "A"
                         },
                         new
                         {
                             CateId = 3,
-                            CreateDate = new DateTime(2025, 8, 7, 16, 36, 33, 184, DateTimeKind.Local).AddTicks(9023),
+                            CreateDate = new DateTime(2025, 8, 7, 17, 58, 14, 901, DateTimeKind.Local).AddTicks(6266),
                             Description = "Phân loại 03",
-                            ModifiedDate = new DateTime(2025, 8, 7, 16, 36, 33, 184, DateTimeKind.Local).AddTicks(9023),
+                            ModifiedDate = new DateTime(2025, 8, 7, 17, 58, 14, 901, DateTimeKind.Local).AddTicks(6267),
                             Name = "Cate_03",
                             Status = "A"
                         });

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OMS.EFCore.Domain.Entities;
 using OMS.EFCore.Domain.Models;
 using OMS.EFCore.Services.Interfaces;
 
@@ -49,6 +50,11 @@ namespace OMS.EFCore.Controllers
             if (sumLineAmnt > order.TotalAmount)
             {
                 return BadRequest("Total amount is incorrect.");
+            }
+
+            if (!string.IsNullOrEmpty(order.Status) && (order.Status != "O" && order.Status != "C" && order.Status != "H"))
+            {
+                return BadRequest("Status must be one of the 3 values O, C, H.");
             }
 
             var created = await _orderService.AddAsync(order);
