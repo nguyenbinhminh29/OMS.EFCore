@@ -20,7 +20,7 @@ namespace OMS.EFCore.Services.Implements
             this._repository = repository;
         }
 
-        public Task<Product> CreateAsync(ProductModel product)
+        public async Task<Product> CreateAsync(ProductModel product)
         {
             var model = new Product()
             {
@@ -33,7 +33,7 @@ namespace OMS.EFCore.Services.Implements
                 ModifiedDate = DateTime.Now,
             };
 
-            return _repository.AddAsync(model);
+            return await _repository.AddAsync(model);
         }
 
         public async Task<bool> DeleteAsync(int id)
@@ -47,6 +47,17 @@ namespace OMS.EFCore.Services.Implements
         public async Task<IEnumerable<Product>> GetAllAsync()
         {
             return await _repository.GetAllAsync();
+        }
+
+        public async Task<PaginationResults<Product>> GetAllAsync(int skip, int take)
+        {
+            var products = await _repository.GetAllAsync();
+            return new PaginationResults<Product>(
+                [.. products.Select(product => new Product()
+                {
+                    ProductId = product.ProductId
+                }).Skip(skip).Take(take)], take, products.Count()
+                );
         }
 
         public async Task<Product?> GetByIdAsync(int id)

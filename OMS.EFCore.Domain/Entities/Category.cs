@@ -7,21 +7,15 @@ using System.Threading.Tasks;
 
 namespace OMS.EFCore.Domain.Entities
 {
-    public class Product
+    public class Category
     {
-        public int ProductId { get; set; }
+        public int CateId { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(50)]
         public string? Name { get; set; }
 
         [MaxLength(100)]
-        public string? ForeignName { get; set; }
-
-        public decimal Price { get; set; }
-
-        public int? CategoryId { get; set; }
-
-        public Category? Category { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// A - Active, I - Inactive, D - Delete
@@ -32,5 +26,7 @@ namespace OMS.EFCore.Domain.Entities
         public DateTime CreateDate { get; set; }
 
         public DateTime ModifiedDate { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

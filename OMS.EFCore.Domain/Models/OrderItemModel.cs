@@ -6,34 +6,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OMS.EFCore.Domain.Entities
+namespace OMS.EFCore.Domain.Models
 {
-    public class OrderItem
+    public class OrderItemModel
     {
-        public int OrderItemId { get; set; }
-
-        public int OrderId { get; set; }
-
         public int ProductId { get; set; }
 
         public decimal Quantity { get; set; }
 
-        [MaxLength(50)]
         public string? UOM { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
         public decimal UnitPrice { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
         public decimal OpenQty { get; set; }    // using for delivery
 
-        [Column(TypeName = "decimal(18,2)")]
         public decimal DiscountPercent { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
         public decimal DiscountAmount { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
         public decimal LineAmount { get; set; }
     }
 }

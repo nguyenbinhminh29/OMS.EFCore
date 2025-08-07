@@ -12,6 +12,11 @@ namespace OMS.EFCore.Data
     public interface IOMSEFCoreDbContext
     {
         DbSet<Product> Products { get; set; }
+        DbSet<Customer> Customers { get; set; }
+        DbSet<Category> Categories { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+
         DatabaseFacade Database { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }

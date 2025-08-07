@@ -1,48 +1,36 @@
-﻿using System;
+﻿using OMS.EFCore.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OMS.EFCore.Domain.Entities
+namespace OMS.EFCore.Domain.Models
 {
-    public class Order
+    public class OrderModel
     {
-        public int OrderId { get; set; }
-
         public int CustomerId { get; set; }
 
         public DateTime OrderDate { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
         public decimal TotalAmount { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
         public decimal DiscountAmount { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
         public decimal CollectedAmount { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
         public decimal PayableAmount { get; set; }
 
         /// <summary>
         /// O - Open, C - Completed, H - Holding
         /// </summary>
-        [MaxLength(1)]
         public string? Status { get; set; }
 
-        public bool IsCancelled { get; set; }
+        public bool IsCancelled { get; set; } = false;
 
-        public DateTime CreateDate { get; set; }
-
-        public DateTime ModifiedDate { get; set; }
-
-        [MaxLength(250)]
         public string? Remark { get; set; }
 
-        public ICollection<OrderItem>? Items { get; set; }
+        public ICollection<OrderItemModel>? Items { get; set; }
     }
 }

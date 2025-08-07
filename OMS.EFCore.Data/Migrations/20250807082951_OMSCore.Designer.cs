@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OMS.EFCore.Data;
 
@@ -11,9 +12,11 @@ using OMS.EFCore.Data;
 namespace OMS.EFCore.Data.Migrations
 {
     [DbContext(typeof(OMSEFCoreDbContext))]
-    partial class OMSEFCoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250807082951_OMSCore")]
+    partial class OMSCore
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,7 +44,6 @@ namespace OMS.EFCore.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -52,35 +54,6 @@ namespace OMS.EFCore.Data.Migrations
                     b.HasKey("CateId");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            CateId = 1,
-                            CreateDate = new DateTime(2025, 8, 7, 15, 39, 23, 915, DateTimeKind.Local).AddTicks(11),
-                            Description = "Phân loại 01",
-                            ModifiedDate = new DateTime(2025, 8, 7, 15, 39, 23, 915, DateTimeKind.Local).AddTicks(23),
-                            Name = "Cate_01",
-                            Status = "A"
-                        },
-                        new
-                        {
-                            CateId = 2,
-                            CreateDate = new DateTime(2025, 8, 7, 15, 39, 23, 915, DateTimeKind.Local).AddTicks(26),
-                            Description = "Phân loại 02",
-                            ModifiedDate = new DateTime(2025, 8, 7, 15, 39, 23, 915, DateTimeKind.Local).AddTicks(26),
-                            Name = "Cate_02",
-                            Status = "A"
-                        },
-                        new
-                        {
-                            CateId = 3,
-                            CreateDate = new DateTime(2025, 8, 7, 15, 39, 23, 915, DateTimeKind.Local).AddTicks(28),
-                            Description = "Phân loại 03",
-                            ModifiedDate = new DateTime(2025, 8, 7, 15, 39, 23, 915, DateTimeKind.Local).AddTicks(28),
-                            Name = "Cate_03",
-                            Status = "A"
-                        });
                 });
 
             modelBuilder.Entity("OMS.EFCore.Domain.Entities.Customer", b =>

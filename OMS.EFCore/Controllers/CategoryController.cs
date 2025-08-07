@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using OMS.EFCore.Domain.Entities;
 using OMS.EFCore.Domain.Models;
 using OMS.EFCore.Services.Interfaces;
 
@@ -8,19 +7,19 @@ namespace OMS.EFCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class CategoryController : ControllerBase
     {
-        private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
 
-        public ProductController(IProductService productService)
+        public CategoryController(ICategoryService categoryService)
         {
-            this._productService = productService;
+            this._categoryService = categoryService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _productService.GetAllAsync());
+            return Ok(await _categoryService.GetAllAsync());
         }
 
         [HttpGet("Paged")]
@@ -28,42 +27,42 @@ namespace OMS.EFCore.Controllers
         {
             if (skip.HasValue && take.HasValue)
             {
-                return Ok(await _productService.GetAllAsync(skip.Value, take.Value));
+                return Ok(await _categoryService.GetAllAsync(skip.Value, take.Value));
             }
-            return Ok(await _productService.GetAllAsync());
+            return Ok(await _categoryService.GetAllAsync());
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var product = await _productService.GetByIdAsync(id);
+            var product = await _categoryService.GetByIdAsync(id);
             return product == null ? NotFound() : Ok(product);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] ProductModel product)
+        public async Task<IActionResult> Create([FromBody] CategoryModel category)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            if (!string.IsNullOrEmpty(product.Status) && (product.Status != "A" && product.Status != "I" && product.Status != "D"))
+            if (!string.IsNullOrEmpty(category.Status) && (category.Status != "A" && category.Status != "I" && category.Status != "D"))
             {
                 return BadRequest("Status must be one of the 3 values A, I, D");
             }
-            var created = await _productService.CreateAsync(product);
-            return CreatedAtAction(nameof(Get), new { id = created.ProductId }, created);
+            var created = await _categoryService.CreateAsync(category);
+            return CreatedAtAction(nameof(Get), new { id = created.CateId }, created);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] ProductModel product)
+        public async Task<IActionResult> Update(int id, [FromBody] CategoryModel category)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            var result = await _productService.UpdateAsync(id, product);
+            var result = await _categoryService.UpdateAsync(id, category);
             return result ? NoContent() : NotFound();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await _productService.DeleteAsync(id);
+            var result = await _categoryService.DeleteAsync(id);
             return result ? NoContent() : NotFound();
         }
     }

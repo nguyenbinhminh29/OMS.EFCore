@@ -39,12 +39,12 @@ namespace OMS.EFCore.Repositories.Implements
 
         public async Task<IEnumerable<Product>> GetAllAsync()
         {
-            return await _dbContext.Products.ToListAsync();
+            return await _dbContext.Products.Include(c => c.Category).ToListAsync();
         }
 
         public async Task<Product?> GetByIdAsync(int id)
         {
-            return await _dbContext.Products.FindAsync(id);
+            return await _dbContext.Products.Include(c => c.Category).FirstOrDefaultAsync(x => x.ProductId == id);
         }
 
         public async Task UpdateAsync(Product product)
