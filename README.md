@@ -38,7 +38,7 @@ In IDE tools, open Package Manger Console (Tools > NuGet Package Manger > Packag
 In the Default Project options, please choose OMS.EFCore.Data, then execute the commands below in turn:
 
 ```bash
-	Add-Migration OMSCore
-	Update-Database
+PM> Add-Migration OMSCore
+PM> Update-Database
 ```
 
