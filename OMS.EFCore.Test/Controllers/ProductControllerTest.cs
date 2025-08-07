@@ -25,9 +25,13 @@ namespace OMS.EFCore.Test.Controllers
             Mock<IProductRepository> productRepository = new();
             productRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(ProductMockData.GetProducts());
 
-            IProductService productService = new ProductService(productRepository.Object);
+            Mock<ICategoryRepository> categoryRepository = new();
+            categoryRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(ProductMockData.GetCategories());
 
-            ProductController productController = new(productService);
+            IProductService productService = new ProductService(productRepository.Object);
+            ICategoryService categoryService = new CategoryService (categoryRepository.Object);
+
+            ProductController productController = new(productService, categoryService);
 
             // Action
             var result = (OkObjectResult)await productController.GetAll();
@@ -44,9 +48,13 @@ namespace OMS.EFCore.Test.Controllers
             Mock<IProductRepository> productRepository = new();
             productRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(ProductMockData.GetProducts());
 
-            IProductService productService = new ProductService(productRepository.Object);
+            Mock<ICategoryRepository> categoryRepository = new();
+            categoryRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(ProductMockData.GetCategories());
 
-            ProductController productController = new(productService);
+            IProductService productService = new ProductService(productRepository.Object);
+            ICategoryService categoryService = new CategoryService(categoryRepository.Object);
+
+            ProductController productController = new(productService, categoryService);
 
             // Action
             var result = (NotFoundResult)await productController.Get(9);

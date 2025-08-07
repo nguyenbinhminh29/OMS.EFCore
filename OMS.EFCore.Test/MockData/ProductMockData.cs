@@ -13,7 +13,7 @@ namespace OMS.EFCore.Test.MockData
         {
             return new List<Product>()
             {
-                new Product()
+                new()
                 {
                     ProductId = 1,
                     Name = "Item1",
@@ -21,7 +21,7 @@ namespace OMS.EFCore.Test.MockData
                     CategoryId = 1,
                     Status = "A",
                 },
-                new Product()
+                new()
                 {
                     ProductId = 2,
                     Name = "Item2",
@@ -29,7 +29,7 @@ namespace OMS.EFCore.Test.MockData
                     CategoryId = 1,
                     Status = "A",
                 },
-                new Product()
+                new()
                 {
                     ProductId = 3,
                     Name = "Item3",
@@ -38,6 +38,16 @@ namespace OMS.EFCore.Test.MockData
                     Status = "A",
                 },
             };
+        }
+
+        public static List<Category> GetCategories()
+        {
+            return
+            [
+                new Category { CateId = 1, Name = "Cate_01", Description = "Phân loại 01", Status = "A", CreateDate = DateTime.Now, ModifiedDate = DateTime.Now },
+                new Category { CateId = 2, Name = "Cate_02", Description = "Phân loại 02", Status = "A", CreateDate = DateTime.Now, ModifiedDate = DateTime.Now },
+                new Category { CateId = 3, Name = "Cate_03", Description = "Phân loại 03", Status = "A", CreateDate = DateTime.Now, ModifiedDate = DateTime.Now },
+            ];
         }
     }
 }
